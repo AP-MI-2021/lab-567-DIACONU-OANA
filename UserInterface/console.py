@@ -34,7 +34,7 @@ def handle_crud(rezervari):
             break
         else:
             print('Optiune invalida!')
-    retrun rezervari
+    return rezervari
 
 
 def handle_show_all(rezervari):
