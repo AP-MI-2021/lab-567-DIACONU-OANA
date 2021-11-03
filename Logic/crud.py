@@ -13,6 +13,9 @@ def create(lst_rezervari, id_rezervare: int, nume, clasa, pret, checkin):
     :return: o noua lista formata din lst_rezervari si noua rezervare adaugata
     '''
 
+    if read(lst_rezervari,id_rezervare) is not None:
+        raise ValueError(f'Exista deja o rezervare cu id-ul {id_rezervare}')
+
     rezervare = creeaza_rezervare(id_rezervare, nume, clasa, pret, checkin)
     return lst_rezervari + [rezervare]
 
@@ -22,8 +25,14 @@ def read(lst_rezervari, id_rezervare:int = None):
     Citeste o rezervare din baza de date.
     :param lst_rezervari: lista de rezervari
     :param id_rezervare: id-ul rezervarii
-    :return: rezervarea cu id-ul id_rezervare sau toata lista cu rezervari daca id_rezervare= None
+    :return: -rezervarea cu id-ul id_rezervare daca exista
+             -toata lista cu rezervari daca id_rezervare= None
+             -None, daca nu exista rezervare cu id_rezervare
     '''
+
+
+    if not id_rezervare:
+        return lst_rezervari
 
     rezervare_cu_id= None
     for rezervare in lst_rezervari:
@@ -32,7 +41,7 @@ def read(lst_rezervari, id_rezervare:int = None):
 
     if rezervare_cu_id:
         return rezervare_cu_id
-    return lst_rezervari
+    return None
 
 
 def update(lst_rezervari, new_rezervare):
@@ -42,6 +51,9 @@ def update(lst_rezervari, new_rezervare):
     :param new_rezervare: rezervarea care se va actualiza - id-ul trebuie sa fie unul existent
     :return: o lista de rezevari actualizata
     '''
+
+    if read(lst_rezervari,get_id(new_rezervare)) is None:
+        raise ValueError(f'Nu exista  o rezervare cu id-ul {get_id(new_rezervare)} pe care sa o actualizam')
 
     new_rezervari= []
     for rezervare in lst_rezervari:
@@ -59,6 +71,9 @@ def delete(lst_rezervari, id_rezervare:int):
     :param id_rezervare: id-ul rezervarii
     :return: o lista de rezervari fara rezervarea cu id-ul id_rezervare
     '''
+
+    if read(lst_rezervari,id_rezervare) is None:
+        raise ValueError(f'Nu exista  o rezervare cu id-ul {id_rezervare} pe care sa o stergem')
 
     new_rezervari= []
     for rezervare in lst_rezervari:

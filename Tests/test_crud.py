@@ -19,6 +19,14 @@ def test_create():
     assert len(new_rezervari) == len(rezervari) + 1
     assert r_new in new_rezervari
 
+    #testam daca se lanseaza exceptie pentru id duplicat
+
+    params2 =(6, 'Stancu', 'economy plus',654,'nu')
+    try:
+        some_r =create(new_rezervari, *params2)
+        assert False
+    except ValueError:
+        assert True
 
 def test_read():
     rezervari = get_data()
