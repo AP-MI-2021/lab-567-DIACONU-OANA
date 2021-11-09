@@ -20,7 +20,6 @@ def handle_add(rezervari):
         pret = input('Dati pretul rezervarii: ')
         checkin = input('Confirmati checkin-ul rezervarii: ')
         return create(rezervari,id_rezervare,nume,clasa,pret,checkin)
-
     except ValueError as ve:
         print('Eroare:',ve)
 

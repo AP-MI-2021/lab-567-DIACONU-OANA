@@ -36,7 +36,7 @@ def test_read():
 
 def test_update():
     rezervari = get_data()
-    r_updated = creeaza_rezervare(1, 'new name', 'new class',200,'new checkin')
+    r_updated = creeaza_rezervare(1, 'new name','economy',200,'da')
     updated = update(rezervari, r_updated)
     assert r_updated in updated
     assert r_updated not in rezervari

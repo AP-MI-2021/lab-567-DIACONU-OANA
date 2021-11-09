@@ -1,4 +1,4 @@
-def creeaza_rezervare(id_rezervare: int, nume, clasa, pret, checkin):
+def creeaza_rezervare(id_rezervare: int, nume, clasa, pret: float, checkin):
     '''
     Creeaza o rezervare.
     :param id_rezervare: id-ul rezervarii, trebuie sa fie unic.
