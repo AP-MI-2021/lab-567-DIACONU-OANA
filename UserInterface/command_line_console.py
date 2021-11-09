@@ -4,7 +4,7 @@ from UserInterface.console import handle_show_all
 
 def main_line(rezervari):
         while True:
-
+            try:
                 print('Daca solicitati detalii despre optiuni scrieti: help : ')
                 optiunea=input('Optiunea ')
                 if optiunea == 'help':
@@ -52,6 +52,8 @@ def main_line(rezervari):
                             return rezervari
                         else:
                             print('Optiune invalida!')
+            except ValueError as ve:
+                print('Eroare:', ve)
 
 
 
