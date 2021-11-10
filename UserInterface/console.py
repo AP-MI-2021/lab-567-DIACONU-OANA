@@ -2,12 +2,16 @@ from Domain.rezervare import get_str, get_nume, get_clasa, get_pret, get_checkin
 from Logic.clasa_superioara import trecere_la_clasa_superioara
 from Logic.crud import create, read, update, delete
 from Logic.ieftinire_pret import ieftinire_pret_dupa_checkin
+from Logic.pretul_maxim_pe_clasa import get_pretul_maxim_pe_clasa
+from Logic.suma_preturilor_pe_nume import suma_preturilor_pe_nume
 
 
 def show_menu():
     print('1.CRUD')
     print('2. Trecerea tuturor rezervărilor făcute pe un nume citit la o clasă superioară.')
-    print('3. Ieftinirea tuturor rezervărilor la care s-a făcut checkin cu un procentaj citit')
+    print('3. Ieftinirea tuturor rezervărilor la care s-a făcut checkin cu un procentaj citit.')
+    print('4. Determinarea prețului maxim pentru fiecare clasă.')
+    print('6. Afișarea sumelor prețurilor pentru fiecare nume.')
     print('x.Exit')
 
 
@@ -116,6 +120,15 @@ def handle_trecerea_la_clasa_superioara(rezervari):
     return rezervari
 
 
+def handle_pret_maxim_pe_clasa(rezervari):
+    result =get_pretul_maxim_pe_clasa(rezervari)
+    print(result)
+
+
+def handle_suma_preturi_pe_nume(rezervari):
+    result= suma_preturilor_pe_nume(rezervari)
+    print(result)
+
 def run_ui(rezervari):
 
     while True:
@@ -127,6 +140,12 @@ def run_ui(rezervari):
             rezervari = handle_trecerea_la_clasa_superioara(rezervari)
         elif optiune == '3':
             rezervari= handle_ieftinire_pret(rezervari)
+        elif optiune == '4':
+            rezervari = handle_pret_maxim_pe_clasa(rezervari)
+        elif optiune == '5':
+            pass
+        elif optiune == '6':
+            rezervari = handle_suma_preturi_pe_nume(rezervari)
         elif optiune == 'x':
             break
         else:
