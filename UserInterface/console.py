@@ -146,7 +146,7 @@ def handle_undo(rezervari,undo_list,redo_list):
     return rezervari
 
 def handle_redo(rezervari,undo_list,redo_list):
-    redo_result=do_redo(undo_list,redo_list)
+    redo_result=do_redo(undo_list,redo_list,rezervari)
     if redo_result is not None:
         return redo_result
     return rezervari
@@ -155,7 +155,7 @@ def handle_redo(rezervari,undo_list,redo_list):
 def run_ui(rezervari,undo_list,redo_list):
 
     while True:
-        handle_show_all(rezervari)
+        #handle_show_all(rezervari)
         show_menu()
         optiune = input('Optiunea aleasa: ')
         if optiune == '1':
@@ -165,11 +165,11 @@ def run_ui(rezervari,undo_list,redo_list):
         elif optiune == '3':
             rezervari= handle_ieftinire_pret(rezervari,undo_list,redo_list)
         elif optiune == '4':
-            handle_pret_maxim_pe_clasa(rezervari,undo_list,redo_list)
+            handle_pret_maxim_pe_clasa(rezervari)
         elif optiune == '5':
-            handle_ordonarea_rezervarilor_dupa_pret(rezervari,undo_list,redo_list)
+            handle_ordonarea_rezervarilor_dupa_pret(rezervari)
         elif optiune == '6':
-            handle_suma_preturi_pe_nume(rezervari,undo_list,redo_list)
+            handle_suma_preturi_pe_nume(rezervari)
         elif optiune == 'u':
             rezervari= handle_undo(rezervari,undo_list,redo_list)
         elif optiune == 'r':

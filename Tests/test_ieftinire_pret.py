@@ -13,7 +13,7 @@ def get_data():
 
 def test_ieftinire_pret_dupa_checkin():
     rezervari = get_data()
-    rezervari = ieftinire_pret_dupa_checkin(rezervari,'da', 10)
+    rezervari = ieftinire_pret_dupa_checkin(rezervari,'da', 10,[],[])
     for rezervare in rezervari:
         if get_id(rezervare) == 1:
             assert get_pret(rezervare) == 900.0

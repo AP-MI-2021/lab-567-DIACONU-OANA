@@ -1,12 +1,14 @@
 from Domain.rezervare import get_nume, creeaza_rezervare, get_id, get_pret, get_checkin, get_clasa
 
 
-def trecere_la_clasa_superioara(lst_rezervari, continut_nume):
+def trecere_la_clasa_superioara(lst_rezervari, continut_nume,undo_list,redo_list):
     """
     Trecerea tuturor rezervărilor făcute pe un nume citit la o clasă superioară
     :param lst_rezervari: lista de rezervari
     :param continut_nume: numele rezervarii
     :param clasa: clasa rezervarii
+    :param undo_list:o lista care memoreaza lista de rezervari inainte de trecerea la o clasa superioara
+    param redo_list:o lista care memoreaza lista de rezervari dupa trecerea la o clasa superioara
     :return: o noua lista cu clase modificate
     """
 
@@ -22,5 +24,7 @@ def trecere_la_clasa_superioara(lst_rezervari, continut_nume):
                 result.append(creeaza_rezervare(get_id(rezervare), get_nume(rezervare),'business',get_pret(rezervare),get_checkin(rezervare)))
         else:
              result.append(rezervare)
+    undo_list.append(lst_rezervari)
+    redo_list.clear()
     return result
 

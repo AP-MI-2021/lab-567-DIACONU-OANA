@@ -3,6 +3,8 @@ from Tests.ordonare import test_ordonarea_rezervarilor_dupa_pret
 from Tests.pretul_maxim import test_get_pretul_maxim_pe_clasa
 from Tests.suma_preturilor import test_suma_preturilor_pe_nume
 from Tests.test_crud import test_create, test_read, test_update, test_delete
+from Tests.test_functionalitati_cu_undo_redo import test_ieftinire_pret_dupa_checkin_undo_redo, \
+    test_trecere_la_clasa_superioara_undo_redo
 from Tests.test_ieftinire_pret import test_ieftinire_pret_dupa_checkin
 from Tests.test_trecere import test_trecere_la_clasa_superioara
 from UserInterface.command_line_console import main_line
@@ -25,7 +27,7 @@ def main():
     if meniu == 'clasic':
         run_ui(rezervari,undo_list,redo_list)
     elif meniu == 'linie':
-        main_line(rezervari)
+        main_line(rezervari,undo_list,redo_list)
 
 
 
@@ -40,4 +42,6 @@ if __name__ == '__main__':
   test_get_pretul_maxim_pe_clasa()
   test_suma_preturilor_pe_nume()
   test_ordonarea_rezervarilor_dupa_pret()
+  test_ieftinire_pret_dupa_checkin_undo_redo()
+  test_trecere_la_clasa_superioara_undo_redo()
   main()
