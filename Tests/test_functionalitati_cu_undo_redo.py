@@ -1,7 +1,7 @@
 from Domain.rezervare import creeaza_rezervare, get_id, get_pret, get_clasa
 from Logic.clasa_superioara import trecere_la_clasa_superioara
 from Logic.ieftinire_pret import ieftinire_pret_dupa_checkin
-from Logic.undo_redo import do_redo, do_undo
+from UserInterface.console import handle_undo, handle_redo
 
 
 def get_data():
@@ -29,7 +29,7 @@ def test_ieftinire_pret_dupa_checkin_undo_redo():
             assert get_pret(rezervare) == 420.3
         elif get_id(rezervare) == 5:
             assert get_pret(rezervare) == 1053
-    r_new = do_undo(undo_list,redo_list,r_new)
+    r_new = handle_undo(r_new,undo_list,redo_list)
     for rezervare in r_new:
         if get_id(rezervare) == 1:
             assert get_pret(rezervare) == 1000
@@ -41,7 +41,7 @@ def test_ieftinire_pret_dupa_checkin_undo_redo():
             assert get_pret(rezervare) == 467
         elif get_id(rezervare) == 5:
             assert get_pret(rezervare) == 1053
-    r_new= do_redo(undo_list,redo_list,r_new)
+    r_new= handle_redo(r_new,undo_list,redo_list)
     for rezervare in r_new:
         if get_id(rezervare) == 1:
             assert get_pret(rezervare) == 900.0
@@ -71,7 +71,7 @@ def test_trecere_la_clasa_superioara_undo_redo():
             assert get_clasa(rezervare) == 'business'
         elif get_id(rezervare) == 5:
             assert get_clasa(rezervare) == 'business'
-    r_new =do_undo(undo_list,redo_list,r_new)
+    r_new =handle_undo(r_new,undo_list,redo_list)
     for rezervare in r_new:
         if get_id(rezervare) == 1:
             assert get_clasa(rezervare) == 'business'
@@ -83,7 +83,7 @@ def test_trecere_la_clasa_superioara_undo_redo():
             assert get_clasa(rezervare) == 'economy plus'
         elif get_id(rezervare) == 5:
             assert get_clasa(rezervare) == 'business'
-    r_new=do_redo(undo_list,redo_list,r_new)
+    r_new=handle_redo(r_new,undo_list,redo_list)
     for rezervare in r_new:
         if get_id(rezervare) == 1:
             assert get_clasa(rezervare) == 'business'
