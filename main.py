@@ -7,6 +7,7 @@ from Tests.test_functionalitati_cu_undo_redo import test_ieftinire_pret_dupa_che
     test_trecere_la_clasa_superioara_undo_redo
 from Tests.test_ieftinire_pret import test_ieftinire_pret_dupa_checkin
 from Tests.test_trecere import test_trecere_la_clasa_superioara
+from Tests.test_undo_redo import test_undo_redo
 from UserInterface.command_line_console import main_line
 from UserInterface.console import run_ui
 
@@ -44,4 +45,5 @@ if __name__ == '__main__':
   test_ordonarea_rezervarilor_dupa_pret()
   test_ieftinire_pret_dupa_checkin_undo_redo()
   test_trecere_la_clasa_superioara_undo_redo()
+  test_undo_redo()
   main()
