@@ -155,7 +155,7 @@ def handle_redo(rezervari,undo_list,redo_list):
 def run_ui(rezervari,undo_list,redo_list):
 
     while True:
-        #handle_show_all(rezervari)
+        handle_show_all(rezervari)
         show_menu()
         optiune = input('Optiunea aleasa: ')
         if optiune == '1':

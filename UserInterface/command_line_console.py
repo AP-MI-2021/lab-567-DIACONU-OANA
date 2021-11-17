@@ -33,11 +33,11 @@ def main_line(rezervari,undo_list,redo_list):
                             pret= float(optiune_separata[4])
                             checkin= optiune_separata[5]
                             print('rezervarea a fost adaugata cu succes!')
-                            rezervari =create(rezervari,id_rezervare, nume, clasa, pret, checkin)
+                            rezervari =create(rezervari,id_rezervare, nume, clasa, pret, checkin,undo_list,redo_list)
                         elif optiune_separata[0] =='delete':
                             id_rezervare = int(optiune_separata[1])
                             print("Rezervarea a fost stearsa cu succes!")
-                            rezervari= delete(rezervari,id_rezervare)
+                            rezervari= delete(rezervari,id_rezervare,undo_list,redo_list)
                         elif optiune_separata[0] =='update':
                             if len(optiune_separata) != 6:
                                 raise ValueError("Trebuie sa introduceti exact 5 date!")
@@ -47,7 +47,7 @@ def main_line(rezervari,undo_list,redo_list):
                             pret= float(optiune_separata[4])
                             checkin= optiune_separata[5]
                             print('Rezervarea a fost modificata cu succes!')
-                            rezervari= update(rezervari,creeaza_rezervare(id_rezervare,nume,clasa,pret,checkin))
+                            rezervari= update(rezervari,creeaza_rezervare(id_rezervare,nume,clasa,pret,checkin),undo_list,redo_list)
                         elif optiune_separata[0] =='showall':
                             handle_show_all(rezervari)
                         elif optiune_separata[0] =='undo':
